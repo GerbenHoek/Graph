@@ -1,3 +1,3 @@
-Load "Diagnosis" with ghci
-You can do "run" or "runMax" 
-See the Diagnosis code comments for a discription
+Load "Diagnose" with ghci
+You can do "run" or "runMax Int" 
+See the Diagnose code comments for a discription
