@@ -43,11 +43,11 @@ diagnoseMax n fsm a1 a2 =
       pts = [(s, C (a2, 0)) | s <- accept fsm]
       g = build (pruneBFSM n fsm) $ C (a1, 0) 
 
--- run calculates the buggyRules in the shorted path between 
+-- run calculates the buggyRules in the shortest path between 
 -- expr1 = 4 - 9 * (9 + 7 * Var "x") - Var "x" and 
 -- expr2 = (-45) + 6 * Var "x"
--- runMax calcultes these rules only looking at paths that 
--- have no more than 5 buggyRules
+-- runMax n calcultes these rules only looking at paths that 
+-- have no more than n buggyRules
 
 run :: Maybe [L (Maybe (Rule Expr))]
 run = diagnose (fsm simplify) expr1 expr2 
