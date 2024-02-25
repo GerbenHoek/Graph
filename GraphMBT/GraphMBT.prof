@@ -1,0 +1,177 @@
+	Sun Feb 25 16:25 2024 Time and Allocation Profiling Report  (Final)
+
+	   GraphMBT +RTS -p -RTS
+
+	total time  =        0.28 secs   (275 ticks @ 1000 us, 1 processor)
+	total alloc = 113,211,136 bytes  (excludes profiling overheads)
+
+COST CENTRE MODULE                   SRC                                             %time %alloc
+
+compare     Derive.Deriver           app/Derive/Deriver.hs:16:24-26                   62.5    0.0
+insert      BackTracker.Graph        app/BackTracker/Graph.hs:(15,1)-(16,64)          17.8   36.1
+build       BackTracker.GraphBuilder app/BackTracker/GraphBuilder.hs:(41,1)-(52,41)   12.7   10.1
+insert      Derive.Deriver           app/Derive/Deriver.hs:(19,1)-(20,57)              1.5    4.7
+applyAll    FSMMaker.StrategyBas     app/FSMMaker/StrategyBas.hs:(9,1)-(11,43)         1.1    3.1
+apply       BackTracker.GraphBuilder app/BackTracker/GraphBuilder.hs:(20,1)-(26,38)    0.7   11.2
+splitter    Derive.Deriver           app/Derive/Deriver.hs:(8,1)-(10,22)               0.7    9.1
+liftToD     Derive.Deriver           app/Derive/Deriver.hs:(24,1)-(27,42)              0.7   11.6
+rule        FSMMaker.Rules           app/FSMMaker/Rules.hs:24:1-17                     0.7    1.4
+buggyRule   FSMMaker.Rules           app/FSMMaker/Rules.hs:27:1-21                     0.7    2.9
+firsts      FSMMaker.Trails          app/FSMMaker/Trails.hs:(38,1)-(46,28)             0.4    4.5
+augment     BackTracker.Graph        app/BackTracker/Graph.hs:24:1-34                  0.0    4.4
+
+
+                                                                                                                  individual      inherited
+COST CENTRE            MODULE                   SRC                                            no.     entries  %time %alloc   %time %alloc
+
+MAIN                   MAIN                     <built-in>                                     213           0    0.0    0.0   100.0  100.0
+ CAF                   BackTracker.Graph        <entire-module>                                425           0    0.0    0.0     0.0    0.0
+  empty                BackTracker.Graph        app/BackTracker/Graph.hs:11:1-19               539           1    0.0    0.0     0.0    0.0
+ CAF                   FSMMaker.Rules           <entire-module>                                422           0    0.0    0.0     0.0    0.0
+  buggyRule            FSMMaker.Rules           app/FSMMaker/Rules.hs:27:1-21                  453           1    0.0    0.0     0.0    0.0
+  rule                 FSMMaker.Rules           app/FSMMaker/Rules.hs:24:1-17                  450           1    0.0    0.0     0.0    0.0
+  showsPrec            FSMMaker.Rules           app/FSMMaker/Rules.hs:17:10-22                 575           1    0.0    0.0     0.0    0.0
+ CAF                   Utils                    <entire-module>                                420           0    0.0    0.0     0.0    0.0
+  nubSub               Utils                    app/Utils.hs:66:1-50                           554           0    0.0    0.0     0.0    0.0
+   sorter              Utils                    app/Utils.hs:60:1-49                           555           1    0.0    0.0     0.0    0.0
+ CAF                   Derive.Deriver           <entire-module>                                411           0    0.0    0.0     0.0    0.0
+  deleteTerm           Derive.Deriver           app/Derive/Deriver.hs:(56,1)-(57,27)           458           1    0.0    0.0     0.0    0.0
+  deleteX              Derive.Deriver           app/Derive/Deriver.hs:(62,1)-(65,33)           459           1    0.0    0.0     0.0    0.0
+  deriv1               Derive.Deriver           app/Derive/Deriver.hs:96:1-60                  498           1    0.0    0.0     0.0    0.0
+  deriv2               Derive.Deriver           app/Derive/Deriver.hs:98:1-57                  544           1    0.0    0.0     0.0    0.0
+  derive               Derive.Deriver           app/Derive/Deriver.hs:(30,1)-(33,40)           449           1    0.0    0.0     0.0    0.0
+  divStrat             Derive.Deriver           app/Derive/Deriver.hs:94:1-80                  436           1    0.0    0.0     0.0    0.0
+   <|>                 FSMMaker.Trails          app/FSMMaker/Trails.hs:(24,1)-(25,17)          441          10    0.0    0.0     0.0    0.0
+   liftToD             Derive.Deriver           app/Derive/Deriver.hs:(24,1)-(27,42)           451          10    0.0    0.0     0.0    0.0
+   repeatS             FSMMaker.StrategyBas     app/FSMMaker/StrategyBas.hs:39:1-31            437           1    0.0    0.0     0.0    0.0
+    .*.                FSMMaker.Trails          app/FSMMaker/Trails.hs:(18,1)-(21,18)          439           1    0.0    0.0     0.0    0.0
+    notS               FSMMaker.StrategyBas     app/FSMMaker/StrategyBas.hs:(24,1)-(30,43)     438           1    0.0    0.0     0.0    0.0
+  forgetCoef           Derive.Deriver           app/Derive/Deriver.hs:(40,1)-(41,30)           454           1    0.0    0.0     0.0    0.0
+  forgetDivTerm        Derive.Deriver           app/Derive/Deriver.hs:(52,1)-(53,28)           457           1    0.0    0.0     0.0    0.0
+  forgetFactor         Derive.Deriver           app/Derive/Deriver.hs:(36,1)-(37,30)           452           1    0.0    0.0     0.0    0.0
+  leaveConst           Derive.Deriver           app/Derive/Deriver.hs:(68,1)-(71,34)           460           1    0.0    0.0     0.0    0.0
+  leaveX               Derive.Deriver           app/Derive/Deriver.hs:(74,1)-(77,34)           461           1    0.0    0.0     0.0    0.0
+  minusError           Derive.Deriver           app/Derive/Deriver.hs:(48,1)-(49,35)           456           1    0.0    0.0     0.0    0.0
+  powerPlus            Derive.Deriver           app/Derive/Deriver.hs:(44,1)-(45,34)           455           1    0.0    0.0     0.0    0.0
+  rules                Derive.Deriver           app/Derive/Deriver.hs:(80,1)-(91,4)            440           1    0.0    0.0     0.0    0.0
+ CAF                   BackTracker.GraphBuilder <entire-module>                                406           0    0.0    0.0     0.0    0.0
+ CAF                   Diagnose                 <entire-module>                                404           0    0.0    0.0     0.0    0.0
+  isBuggyE             Diagnose                 app/Diagnose.hs:13:1-32                        550           1    0.0    0.0     0.0    0.0
+ CAF                   Main                     <entire-module>                                402           0    0.0    0.0   100.0   99.9
+  main                 Main                     app/Main.hs:(13,1)-(20,63)                     426           1    0.0    0.0   100.0   99.9
+   diagnose            Diagnose                 app/Diagnose.hs:(20,1)-(26,22)                 428           1    0.0    0.0   100.0   99.9
+    compare            Derive.Deriver           app/Derive/Deriver.hs:16:24-26                 574           5    0.0    0.0     0.0    0.0
+    accept             FSMMaker.FSM             app/FSMMaker/FSM.hs:14:22-27                   429           1    0.0    0.0     0.0    0.0
+    backTrack          BackTracker.BackTrack    app/BackTracker/BackTrack.hs:(56,1)-(62,33)    481           1    0.0    0.0     0.7    0.6
+     isCycle           BackTracker.BackTrack    app/BackTracker/BackTrack.hs:(30,1)-(34,35)    483         355    0.0    0.1     0.4    0.4
+      ==               FSMMaker.Rules           app/FSMMaker/Rules.hs:12:4-40                  560        1841    0.0    0.0     0.0    0.0
+       ruleName        FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  561        3682    0.0    0.0     0.0    0.0
+      compare          Derive.Deriver           app/Derive/Deriver.hs:16:24-26                 548        1347    0.0    0.0     0.0    0.0
+      nubSub           Utils                    app/Utils.hs:66:1-50                           553         322    0.0    0.1     0.4    0.3
+       isSubSet        Utils                    app/Utils.hs:47:1-35                           562         662    0.0    0.0     0.0    0.0
+        ==             FSMMaker.Rules           app/FSMMaker/Rules.hs:12:4-40                  563        3321    0.0    0.0     0.0    0.0
+         ruleName      FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  564        6642    0.0    0.0     0.0    0.0
+       setNub          Utils                    app/Utils.hs:54:1-33                           557         322    0.4    0.1     0.4    0.1
+        compare        FSMMaker.Rules           app/FSMMaker/Rules.hs:15:4-54                  558        2225    0.0    0.0     0.0    0.0
+         ruleName      FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  559        4450    0.0    0.0     0.0    0.0
+       sorter          Utils                    app/Utils.hs:60:1-49                           556           0    0.0    0.1     0.0    0.1
+     applyG            BackTracker.BackTrack    app/BackTracker/BackTrack.hs:(38,1)-(44,36)    541         151    0.0    0.1     0.4    0.1
+      backwards        BackTracker.Graph        app/BackTracker/Graph.hs:28:1-33               542         151    0.0    0.0     0.4    0.0
+       compare         Derive.Deriver           app/Derive/Deriver.hs:16:24-26                 545        1822    0.4    0.0     0.4    0.0
+       getG            BackTracker.Graph        app/BackTracker/Graph.hs:7:24-27               543         151    0.0    0.0     0.0    0.0
+      isBuggyE         Diagnose                 app/Diagnose.hs:13:1-32                        551           0    0.0    0.0     0.0    0.0
+       isBuggy         FSMMaker.Rules           app/FSMMaker/Rules.hs:7:10-16                  552         354    0.0    0.0     0.0    0.0
+     insertT           BackTracker.BackTrack    app/BackTracker/BackTrack.hs:(20,1)-(21,38)    484         151    0.0    0.1     0.0    0.2
+      compare          Derive.Deriver           app/Derive/Deriver.hs:16:24-26                 549         590    0.0    0.0     0.0    0.0
+      nubSub           Utils                    app/Utils.hs:66:1-50                           565         109    0.0    0.0     0.0    0.1
+       isSubSet        Utils                    app/Utils.hs:47:1-35                           570         373    0.0    0.0     0.0    0.0
+        ==             FSMMaker.Rules           app/FSMMaker/Rules.hs:12:4-40                  571        1666    0.0    0.0     0.0    0.0
+         ruleName      FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  572        3332    0.0    0.0     0.0    0.0
+       setNub          Utils                    app/Utils.hs:54:1-33                           567         109    0.0    0.0     0.0    0.0
+        compare        FSMMaker.Rules           app/FSMMaker/Rules.hs:15:4-54                  568         658    0.0    0.0     0.0    0.0
+         ruleName      FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  569        1316    0.0    0.0     0.0    0.0
+       sorter          Utils                    app/Utils.hs:60:1-49                           566           0    0.0    0.0     0.0    0.0
+     embed             BackTracker.BackTrack    app/BackTracker/BackTrack.hs:17:1-32           482           1    0.0    0.0     0.0    0.0
+    build              BackTracker.GraphBuilder app/BackTracker/GraphBuilder.hs:(41,1)-(52,41) 485           1   12.7   10.1    99.3   99.2
+     compare           Derive.Deriver           app/Derive/Deriver.hs:16:24-26                 503      819506   37.1    0.0    37.1    0.0
+     apply             BackTracker.GraphBuilder app/BackTracker/GraphBuilder.hs:(20,1)-(26,38) 490       12031    0.7   11.2     6.5   48.6
+      applyRule        FSMMaker.Rules           app/FSMMaker/Rules.hs:9:10-18                  495      125429    0.0    0.0     5.8   37.4
+       divStrat        Derive.Deriver           app/Derive/Deriver.hs:94:1-80                  496           0    0.0    0.0     5.8   37.4
+        liftToD        Derive.Deriver           app/Derive/Deriver.hs:(24,1)-(27,42)           497           0    0.7   11.6     4.4   29.7
+         insert        Derive.Deriver           app/Derive/Deriver.hs:(19,1)-(20,57)           514      122108    1.5    4.7     1.5    4.7
+         splitter      Derive.Deriver           app/Derive/Deriver.hs:(8,1)-(10,22)            499      116854    0.7    9.1     0.7    9.1
+         derive        Derive.Deriver           app/Derive/Deriver.hs:(30,1)-(33,40)           519           0    0.0    0.0     0.7    1.4
+          rule         FSMMaker.Rules           app/FSMMaker/Rules.hs:24:1-17                  520           0    0.7    1.4     0.7    1.4
+         forgetCoef    Derive.Deriver           app/Derive/Deriver.hs:(40,1)-(41,30)           522           0    0.0    0.0     0.0    0.7
+          buggyRule    FSMMaker.Rules           app/FSMMaker/Rules.hs:27:1-21                  523           0    0.0    0.7     0.0    0.7
+         forgetDivTerm Derive.Deriver           app/Derive/Deriver.hs:(52,1)-(53,28)           528           0    0.0    0.0     0.0    0.2
+          buggyRule    FSMMaker.Rules           app/FSMMaker/Rules.hs:27:1-21                  529           0    0.0    0.2     0.0    0.2
+         forgetFactor  Derive.Deriver           app/Derive/Deriver.hs:(36,1)-(37,30)           525           0    0.0    0.0     0.0    0.7
+          buggyRule    FSMMaker.Rules           app/FSMMaker/Rules.hs:27:1-21                  526           0    0.0    0.7     0.0    0.7
+         leaveConst    Derive.Deriver           app/Derive/Deriver.hs:(68,1)-(71,34)           531           0    0.0    0.0     0.0    0.1
+          buggyRule    FSMMaker.Rules           app/FSMMaker/Rules.hs:27:1-21                  532           0    0.0    0.1     0.0    0.1
+         leaveX        Derive.Deriver           app/Derive/Deriver.hs:(74,1)-(77,34)           534           0    0.0    0.0     0.0    0.1
+          buggyRule    FSMMaker.Rules           app/FSMMaker/Rules.hs:27:1-21                  535           0    0.0    0.1     0.0    0.1
+         minusError    Derive.Deriver           app/Derive/Deriver.hs:(48,1)-(49,35)           501           0    0.0    0.0     0.7    1.2
+          buggyRule    FSMMaker.Rules           app/FSMMaker/Rules.hs:27:1-21                  502           0    0.7    1.2     0.7    1.2
+        repeatS        FSMMaker.StrategyBas     app/FSMMaker/StrategyBas.hs:39:1-31            505           0    0.0    0.0     1.5    7.7
+         notS          FSMMaker.StrategyBas     app/FSMMaker/StrategyBas.hs:(24,1)-(30,43)     506           0    0.0    0.1     1.5    7.7
+          applyAll     FSMMaker.StrategyBas     app/FSMMaker/StrategyBas.hs:(9,1)-(11,43)      508       13694    1.1    3.1     1.5    7.6
+           firsts      FSMMaker.Trails          app/FSMMaker/Trails.hs:(38,1)-(46,28)          509       96508    0.4    4.5     0.4    4.5
+           empty       FSMMaker.Trails          app/FSMMaker/Trails.hs:(29,1)-(35,26)          510       81151    0.0    0.0     0.0    0.0
+          rule         FSMMaker.Rules           app/FSMMaker/Rules.hs:24:1-17                  507           0    0.0    0.0     0.0    0.0
+      transitions      FSMMaker.FSM             app/FSMMaker/FSM.hs:12:22-32                   491       12031    0.0    0.0     0.0    0.0
+     augment           BackTracker.Graph        app/BackTracker/Graph.hs:24:1-34               536       12031    0.0    4.4    42.9   40.5
+      insert           BackTracker.Graph        app/BackTracker/Graph.hs:(15,1)-(16,64)        537       51231   17.8   36.1    42.9   36.1
+       compare         Derive.Deriver           app/Derive/Deriver.hs:16:24-26                 540      665623   25.1    0.0    25.1    0.0
+       getG            BackTracker.Graph        app/BackTracker/Graph.hs:7:24-27               538       51231    0.0    0.0     0.0    0.0
+       compare         FSMMaker.Rules           app/FSMMaker/Rules.hs:15:4-54                  546         127    0.0    0.0     0.0    0.0
+        ruleName       FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  547         254    0.0    0.0     0.0    0.0
+     start             FSMMaker.FSM             app/FSMMaker/FSM.hs:13:22-26                   489           1    0.0    0.0     0.0    0.0
+    start              FSMMaker.FSM             app/FSMMaker/FSM.hs:13:22-26                   573           1    0.0    0.0     0.0    0.0
+   fsm                 FSMMaker.FSM             app/FSMMaker/FSM.hs:(46,1)-(58,28)             430           1    0.0    0.0     0.0    0.0
+    firsts             FSMMaker.Trails          app/FSMMaker/Trails.hs:(38,1)-(46,28)          473          27    0.0    0.0     0.0    0.0
+     .*.               FSMMaker.Trails          app/FSMMaker/Trails.hs:(18,1)-(21,18)          477          20    0.0    0.0     0.0    0.0
+     empty             FSMMaker.Trails          app/FSMMaker/Trails.hs:(29,1)-(35,26)          478           1    0.0    0.0     0.0    0.0
+    index              Utils                    app/Utils.hs:(97,1)-(99,45)                    469          15    0.0    0.0     0.0    0.0
+     ==                FSMMaker.Trails          app/FSMMaker/Trails.hs:14:12-13                470         306    0.0    0.0     0.0    0.0
+      ==               FSMMaker.Rules           app/FSMMaker/Rules.hs:12:4-40                  471         132    0.0    0.0     0.0    0.0
+       ruleName        FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  472         264    0.0    0.0     0.0    0.0
+    empty              FSMMaker.Trails          app/FSMMaker/Trails.hs:(29,1)-(35,26)          479           4    0.0    0.0     0.0    0.0
+    setNub             Utils                    app/Utils.hs:54:1-33                           474           2    0.0    0.0     0.0    0.0
+     compare           FSMMaker.Rules           app/FSMMaker/Rules.hs:15:4-54                  475          28    0.0    0.0     0.0    0.0
+      ruleName         FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  476          56    0.0    0.0     0.0    0.0
+    >=                 FSMMaker.Trails          app/FSMMaker/Trails.hs:14:16-18                443           1    0.0    0.0     0.0    0.0
+    remainders         FSMMaker.FSM             app/FSMMaker/FSM.hs:(40,1)-(43,57)             433           1    0.0    0.0     0.0    0.0
+     getFix            Utils                    app/Utils.hs:(78,1)-(83,40)                    434           1    0.0    0.0     0.0    0.0
+      firsts           FSMMaker.Trails          app/FSMMaker/Trails.hs:(38,1)-(46,28)          435          77    0.0    0.0     0.0    0.0
+       .*.             FSMMaker.Trails          app/FSMMaker/Trails.hs:(18,1)-(21,18)          446          60    0.0    0.0     0.0    0.0
+       empty           FSMMaker.Trails          app/FSMMaker/Trails.hs:(29,1)-(35,26)          465           3    0.0    0.0     0.0    0.0
+      ==               FSMMaker.Trails          app/FSMMaker/Trails.hs:14:12-13                466          51    0.0    0.0     0.0    0.0
+       ==              FSMMaker.Rules           app/FSMMaker/Rules.hs:12:4-40                  467          22    0.0    0.0     0.0    0.0
+        ruleName       FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  468          44    0.0    0.0     0.0    0.0
+      setNub           Utils                    app/Utils.hs:54:1-33                           442           3    0.0    0.0     0.0    0.0
+       compare         FSMMaker.Trails          app/FSMMaker/Trails.hs:14:16-18                462         757    0.0    0.0     0.0    0.0
+        compare        FSMMaker.Rules           app/FSMMaker/Rules.hs:15:4-54                  463         330    0.0    0.0     0.0    0.0
+         ruleName      FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  464         660    0.0    0.0     0.0    0.0
+       >=              FSMMaker.Trails          app/FSMMaker/Trails.hs:14:16-18                444           0    0.0    0.0     0.0    0.0
+        compare        FSMMaker.Trails          app/FSMMaker/Trails.hs:14:16-18                445          75    0.0    0.0     0.0    0.0
+         compare       FSMMaker.Rules           app/FSMMaker/Rules.hs:15:4-54                  447          33    0.0    0.0     0.0    0.0
+          ruleName     FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  448          66    0.0    0.0     0.0    0.0
+   merge               FSMMaker.FSM             app/FSMMaker/FSM.hs:(79,1)-(81,52)             431           1    0.0    0.0     0.0    0.0
+    build              FSMMaker.FSM             app/FSMMaker/FSM.hs:37:1-44                    486           1    0.0    0.0     0.0    0.0
+     insert            FSMMaker.FSM             app/FSMMaker/FSM.hs:(29,1)-(30,38)             488          10    0.0    0.0     0.0    0.0
+      setNub           Utils                    app/Utils.hs:54:1-33                           492           9    0.0    0.0     0.0    0.0
+       compare         FSMMaker.Rules           app/FSMMaker/Rules.hs:15:4-54                  493          45    0.0    0.0     0.0    0.0
+        ruleName       FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  494          90    0.0    0.0     0.0    0.0
+     endPoints         FSMMaker.FSM             app/FSMMaker/FSM.hs:(33,1)-(34,69)             487           1    0.0    0.0     0.0    0.0
+    flatten            FSMMaker.FSM             app/FSMMaker/FSM.hs:26:1-67                    432           1    0.0    0.0     0.0    0.0
+    labeler            FSMMaker.FSM             app/FSMMaker/FSM.hs:(68,1)-(76,58)             480           1    0.0    0.0     0.0    0.0
+   showsPrec           FSMMaker.Rules           app/FSMMaker/Rules.hs:17:10-22                 576           0    0.0    0.0     0.0    0.0
+    show               FSMMaker.Rules           app/FSMMaker/Rules.hs:18:4-22                  577           8    0.0    0.0     0.0    0.0
+     ruleName          FSMMaker.Rules           app/FSMMaker/Rules.hs:8:10-17                  578           8    0.0    0.0     0.0    0.0
+ CAF                   GHC.Conc.Signal          <entire-module>                                322           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding          <entire-module>                                304           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Encoding.Iconv    <entire-module>                                302           0    0.0    0.0     0.0    0.0
+ CAF                   GHC.IO.Handle.FD         <entire-module>                                293           0    0.0    0.0     0.0    0.0
+ main                  Main                     app/Main.hs:(13,1)-(20,63)                     427           0    0.0    0.0     0.0    0.0
